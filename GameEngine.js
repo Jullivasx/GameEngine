@@ -21,6 +21,10 @@ class GameEngine {
         return GameEngine.#state;
     }
 
+    // максимальное число индексов сохранений
+    #maxIndexGame = 40;
+    #maxAutoIndexGame = 8;
+    #maxQuickIndexGame = 8;
 
     /**
      * Сохранение игры в ячейку 
