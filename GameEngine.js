@@ -21,14 +21,53 @@ class GameEngine {
         return GameEngine.#state;
     }
 
-    // Сохранение игры
-    static saveGame() {
+
+    /**
+     * Сохранение игры в ячейку 
+     * @param {number} index 
+     */
+    static saveGame(index) {
         
     }
 
-    // Загрузка игры
-    static loadGame() {
+    /**
+     * Загрузка игры из ячейки
+     * @param {number} index 
+     */
+    static loadGame(index) {
         
+    }
+
+    /**
+     * Быстрое сохранение
+     * @param {number} index 
+     */
+    static quickSaveGame(index) {
+
+    }
+
+    /**
+     * Быстрая загрузка
+     * @param {number} index 
+     */
+    static quickLoadGame(index) {
+
+    }
+
+    /**
+     * Автоматическое сохранение
+     * @param {number} index 
+     */
+    static autoSave(index) {
+
+    }
+
+    /**
+     * Автоматическая загрузка
+     * @param {number} index 
+     */
+    static autoLoad(index) {
+
     }
 
     // Новая игра
