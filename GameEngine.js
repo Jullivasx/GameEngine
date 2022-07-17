@@ -43,6 +43,14 @@ class GameEngine {
     }
 
     /**
+     * Есть ли игра с индексом
+     * @param {number} index 
+     */
+    static existsGame(index) {
+
+    }
+
+    /**
      * Быстрое сохранение
      * @param {number} index 
      */
@@ -59,6 +67,14 @@ class GameEngine {
     }
 
     /**
+     * Есть ли игра с индексом
+     * @param {number} index 
+     */
+    static existsQuickGame(index) {
+
+    }
+
+    /**
      * Автоматическое сохранение
      * @param {number} index 
      */
@@ -71,6 +87,14 @@ class GameEngine {
      * @param {number} index 
      */
     static autoLoad(index) {
+
+    }
+
+    /**
+     * Есть ли игра с индексом
+     * @param {number} index 
+     */
+    static existsAutoGame(index) {
 
     }
 
