@@ -22,9 +22,14 @@ class GameEngine {
     }
 
     // максимальное число индексов сохранений
-    #maxIndexGame = 40;
-    #maxAutoIndexGame = 8;
-    #maxQuickIndexGame = 8;
+    static #maxIndexGame = 40;
+    static #maxAutoIndexGame = 8;
+    static #maxQuickIndexGame = 8;
+
+    // префиксы для сохранений
+    static #prefSave = "save_"
+    static #prefQuickSave = "save_quick_"
+    static #prefAutoSave = "save_auto_"
 
     /**
      * Сохранение игры в ячейку 
