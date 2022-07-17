@@ -3,16 +3,12 @@ class GameEngine {
     //стейт игры
     static #state = {}
 
-    //static #timeManager = null;
-
     //список локаций
     static #factories = {}
 
     //инициализация игры
     static init() {
         window.$ = GameEngine.getState();
-        //Game.#timeManager = new TimeManager(Game.getState());
-        //Game.#timeManager.check();
 
         //Функция добавление локации в игру
         window.gl = (name, factory) => {
@@ -27,19 +23,13 @@ class GameEngine {
 
     // Сохранение игры
     static saveGame() {
-        //Router.open('ViewSaveGame');
+        
     }
 
     // Загрузка игры
     static loadGame() {
-        //Router.open('ViewLoadGame');
+        
     }
-
-    /*
-    static settingsGame() {
-        Router.open('ViewSettingsGame');
-    }
-    */
 
     // Новая игра
     static start() {
@@ -48,7 +38,7 @@ class GameEngine {
 
     // Продожение игры
     static continueGame() {
-        //console.log('CONTINUE_GAME');
+        
     }
 
     // Исполнение локаци
@@ -73,16 +63,10 @@ class GameEngine {
             return;
         }
 
-        //console.log(fn);
-
         const res = GameEngine.parse(fn());
-
-        //console.log(res);
 
         //?????
         $.__res__ = res;
-        
-        //Router.open('ViewGame');
     }
 
     static params(obj) {
