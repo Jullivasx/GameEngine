@@ -32,6 +32,34 @@ class GameEngine {
     static #prefAutoSave = "save_auto_"
 
     /**
+     * Сохранение игры в ячейку по имени
+     * @param {string} name 
+     */
+    static #saveGameName(name) {
+        localStorage[name] = JSON.stringify(GameEngine.#state);
+    }
+
+    /**
+     * Загрузка игры в ячейку по имени
+     * @param {string} name 
+     */
+    static #loadGameName(name) {
+        GameEngine.#state = JSON.parse(localStorage[name]);
+    }
+
+    /**
+     * Проверка есть ли ячейка по имени
+     * @param {string} name 
+     * @returns 
+     */
+    static #existsGameName(name) {
+        if (localStorage[name]) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Сохранение игры в ячейку 
      * @param {number} index 
      */
