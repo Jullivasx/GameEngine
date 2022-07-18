@@ -209,8 +209,7 @@ class GameEngine {
 
     }
 
-    //парсинг ответа
-    static parse(text) {
+    static parseText(text) {
         const obj = text.split('[').reduce((result, value, index) => {
 
             if (index === 0) {
@@ -228,6 +227,12 @@ class GameEngine {
             html:'',
             params: [],
         });
+        return obj;
+    }
+
+    //парсинг ответа
+    static parse(text) {
+        const obj = GameEngine.parseText(text);
         return GameEngine.params(obj);
     }
 
