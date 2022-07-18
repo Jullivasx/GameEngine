@@ -64,7 +64,7 @@ class GameEngine {
      * @param {number} index 
      */
     static saveGame(index) {
-        
+        GameEngine.#saveGameName(GameEngine.#prefSave + index);
     }
 
     /**
@@ -72,7 +72,7 @@ class GameEngine {
      * @param {number} index 
      */
     static loadGame(index) {
-        
+        GameEngine.#loadGameName(GameEngine.#prefSave + index);
     }
 
     /**
@@ -80,7 +80,7 @@ class GameEngine {
      * @param {number} index 
      */
     static existsGame(index) {
-
+        return GameEngine.#existsGameName(GameEngine.#prefSave + index);
     }
 
     /**
@@ -88,7 +88,7 @@ class GameEngine {
      * @param {number} index 
      */
     static quickSaveGame(index) {
-
+        GameEngine.#saveGameName(GameEngine.#prefQuickSave + index);
     }
 
     /**
@@ -96,7 +96,7 @@ class GameEngine {
      * @param {number} index 
      */
     static quickLoadGame(index) {
-
+        GameEngine.#loadGameName(GameEngine.#prefQuickSave + index);
     }
 
     /**
@@ -104,7 +104,7 @@ class GameEngine {
      * @param {number} index 
      */
     static existsQuickGame(index) {
-
+        return GameEngine.#existsGameName(GameEngine.#prefQuickSave + index);
     }
 
     /**
@@ -112,7 +112,7 @@ class GameEngine {
      * @param {number} index 
      */
     static autoSave(index) {
-
+        GameEngine.#saveGameName(GameEngine.#prefAutoSave + index);
     }
 
     /**
@@ -120,7 +120,7 @@ class GameEngine {
      * @param {number} index 
      */
     static autoLoad(index) {
-
+        GameEngine.#loadGameName(GameEngine.#prefAutoSave + index);
     }
 
     /**
@@ -128,7 +128,7 @@ class GameEngine {
      * @param {number} index 
      */
     static existsAutoGame(index) {
-
+        return GameEngine.#existsGameName(GameEngine.#prefAutoSave + index);
     }
 
     // Новая игра
