@@ -111,7 +111,7 @@ class GameEngine {
      * Автоматическое сохранение
      * @param {number} index 
      */
-    static autoSave(index) {
+    static autoSaveGame(index) {
         GameEngine.#saveGameName(GameEngine.#prefAutoSave + index);
     }
 
@@ -119,7 +119,7 @@ class GameEngine {
      * Автоматическая загрузка
      * @param {number} index 
      */
-    static autoLoad(index) {
+    static autoLoadGame(index) {
         GameEngine.#loadGameName(GameEngine.#prefAutoSave + index);
     }
 
@@ -223,6 +223,10 @@ class GameEngine {
             R: {name: 'navRight', isArray: true, propertyNames: ['img', 'text', 'exec']}
         });
         return GameEngine.params(obj);
+    }
+
+    static __setTestValue(value) {
+        this.#state.__testValue = value;
     }
 
 }

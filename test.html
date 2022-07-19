@@ -28,5 +28,20 @@
         });
       });
     });
+
+    QUnit.module('GameEngine - localStroge', function() {
+      QUnit.test('correct value', function(assert) {
+        localStorage.clear();
+        const testValue = Math.floor(Math.random() * 10000);
+        GameEngine.__setTestValue(testValue);
+        GameEngine.saveGame(1);
+        assert.deepEqual(localStorage['save_1'], JSON.stringify({__testValue: testValue}));
+        GameEngine.autoSaveGame(1);
+        assert.deepEqual(localStorage['save_auto_1'], JSON.stringify({__testValue: testValue}));
+        GameEngine.quickSaveGame(1);
+        assert.deepEqual(localStorage['save_quick_1'], JSON.stringify({__testValue: testValue}));
+      });
+    });
+
   </script>
 </body>
