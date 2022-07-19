@@ -6,14 +6,26 @@
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
   <script src="./qunit/qunit-2.19.1.js"></script>
-  <script>
-    function add(a, b) {
-      return a + b;
-    }
-  
-    QUnit.module('add', function() {
-      QUnit.test('two numbers', function(assert) {
-        assert.equal(add(1, 2), 3);
+  <script src="./GameEngine.js"></script>
+  <script>  
+    QUnit.module('GameEngine - parseText', function() {
+      QUnit.test('correct value', function(assert) {
+        assert.deepEqual(GameEngine.parseText(`text[VS|title1|href1][VS|title2|href2][V|srcVideo][links|title1|href1][links|title2|href2][link|title|href][image|src|nosrc][images|src1|nosrc][images|src2|nosrc]`, {
+          image: {},
+          images: {isArray: true},
+          link: {propertyNames: ['title', 'href']},
+          links: {propertyNames: ['title', 'href'], isArray: true},
+          V: {name: 'video'},
+          VS: {name: 'videos', propertyNames: ['title', 'href'], isArray: true},
+        }), {
+          html: 'text',
+          image: 'src',
+          images: ['src1', 'src2'],
+          link: {title:'title', href: 'href'},
+          links: [ {title:'title1', href: 'href1'}, {title:'title2', href: 'href2'}],
+          video: 'srcVideo',
+          videos: [{title: 'title1', href: 'href1'}, {title: 'title2', href: 'href2'}],
+        });
       });
     });
   </script>

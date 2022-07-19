@@ -169,47 +169,8 @@ class GameEngine {
         $.__res__ = res;
     }
 
-    static params(obj) {
+    static parseText(text, shema = {}) {
 
-        obj.params.forEach((param) => {
-
-            if (param[0] === 'img') {
-                obj.image = param[1];
-            }
-
-            if (param[0] === 'video') {
-                obj.video = param[1];
-            }
-
-            if (param[0] === 'C') {
-                obj.caption = param[1];
-            }
-
-            if (param[0] === 'L') {
-                if (!Array.isArray(obj.navLeft)) obj.navLeft = [];
-                obj.navLeft.push({
-                    img: param[1],
-                    text: param[2],
-                    exec: param[3],
-                });
-            }
-
-            if (param[0] === 'R') {
-                if (!Array.isArray(obj.navRight)) obj.navRight = [];
-                obj.navRight.push({
-                    img: param[1],
-                    text: param[2],
-                    exec: param[3],
-                });
-            }
-            
-        });
-
-        return obj;
-
-    }
-
-    static parseText(text) {
         const obj = text.split('[').reduce((result, value, index) => {
 
             if (index === 0) {
@@ -227,12 +188,40 @@ class GameEngine {
             html:'',
             params: [],
         });
-        return obj;
+
+        const res = {};
+
+        res.html = obj.html;
+
+        obj.params.forEach(param => {
+            const [key, ...values] = param
+            if (!shema[key]) return
+            let value = values[0];
+            if (shema[key].propertyNames) {
+                value = {};
+                shema[key].propertyNames.forEach((name, i) => value[name] = values[i])
+            }
+            const _key = (shema[key].name) ? shema[key].name : key;
+            if (shema[key].isArray) {
+                if (!Array.isArray(res[_key])) res[_key] = [];
+                res[_key].push(value); 
+            } else {
+                res[_key] = value;
+            }
+        });
+
+        return res;
     }
 
     //парсинг ответа
     static parse(text) {
-        const obj = GameEngine.parseText(text);
+        const obj = GameEngine.parseText(text, {
+            img: {},
+            video: {},
+            C: {name: 'caption'},
+            L: {name: 'navLeft', isArray: true, propertyNames: ['img', 'text', 'exec']},
+            R: {name: 'navRight', isArray: true, propertyNames: ['img', 'text', 'exec']}
+        });
         return GameEngine.params(obj);
     }
 
