@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-</head>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="./qunit/qunit-2.19.1.css">
 <body>
-    <script src="./GameEngine.js"></script>
-    <script>
-        gl('start', () => {
-            return `
-                [img|intro/0]
-                [C|Игра]
-                [R|test|Далее|intro]
-            `
-        });
-        GameEngine.start();
-    </script>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="./qunit/qunit-2.19.1.js"></script>
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+  
+    QUnit.module('add', function() {
+      QUnit.test('two numbers', function(assert) {
+        assert.equal(add(1, 2), 3);
+      });
+    });
+  </script>
 </body>
-</html>
