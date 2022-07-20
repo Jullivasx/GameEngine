@@ -169,6 +169,20 @@ class GameEngine {
         $.__res__ = res;
     }
 
+    /**
+     * Парсинг строки в объект
+     * @param {string} text данные
+     * @param {object} shema схема
+     *      пример схемы:
+     *          {
+     *              img: {},
+     *              video: {},
+     *              C: {name: 'caption'},
+     *              L: {name: 'navLeft', isArray: true, propertyNames: ['img', 'text', 'exec']},
+     *              R: {name: 'navRight', isArray: true, propertyNames: ['img', 'text', 'exec']}
+     *           }
+     * @returns object
+     */
     static parseText(text, shema = {}) {
 
         const obj = text.split('[').reduce((result, value, index) => {
@@ -213,18 +227,30 @@ class GameEngine {
         return res;
     }
 
-    //парсинг ответа
-    static parse(text) {
-        const obj = GameEngine.parseText(text, {
-            img: {},
-            video: {},
-            C: {name: 'caption'},
-            L: {name: 'navLeft', isArray: true, propertyNames: ['img', 'text', 'exec']},
-            R: {name: 'navRight', isArray: true, propertyNames: ['img', 'text', 'exec']}
-        });
-        return GameEngine.params(obj);
+    /**
+     * Схема игры
+     */
+    shemaGame = {
+        img: {},
+        video: {},
+        C: {name: 'caption'},
+        L: {name: 'navLeft', isArray: true, propertyNames: ['img', 'text', 'exec']},
+        R: {name: 'navRight', isArray: true, propertyNames: ['img', 'text', 'exec']}
     }
 
+    /**
+     * Метод парсинга строки в обьект по стандартной схеме
+     * @param {string} text данные
+     * @returns 
+     */
+    static parse(text) {
+        return GameEngine.parseText(text, GameEngine.shemaGame);
+    }
+
+    /**
+     * Метод только для тестов
+     * @param {string|number} value 
+     */
     static __setTestValue(value) {
         this.#state.__testValue = value;
     }
