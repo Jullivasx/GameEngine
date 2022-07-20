@@ -1,6 +1,10 @@
 class GameEngine {
 
-    //стейт игры
+    /**
+     * Стейт игры хранится состояние игры
+     * В полях {__name} - храниться информация от движка
+     * В ней храниться состояния парсинга {__parsedText} 
+     */
     static #state = {}
 
     //список локаций
@@ -165,8 +169,7 @@ class GameEngine {
 
         const res = GameEngine.parse(fn());
 
-        //?????
-        $.__res__ = res;
+        $.__parsedText = res;
     }
 
     /**
