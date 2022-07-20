@@ -145,9 +145,18 @@ class GameEngine {
         
     }
 
-    // Исполнение локаци
+    /**
+     * Шаблон пути к локациям игры
+     */
+    static pathLocations = `./src/game/{name}.js`
+
+    /**
+     * Имя локации
+     * @param {string} name 
+     * @returns 
+     */
     static async exec(name) {
-        const src = `./src/game/${name}.js`;
+        const src = GameEngine.pathLocations.replace('{name}', name);
         if (!GameEngine.#factories[name]) {
             try {
                 await Build.load(src);
